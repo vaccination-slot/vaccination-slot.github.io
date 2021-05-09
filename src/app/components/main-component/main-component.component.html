@@ -1,0 +1,19 @@
+<div class="row">
+  <div *ngIf="showStates">
+    <h2 class="col-md-12" style="text-align: center">Please select your state</h2>
+    <div *ngIf="statesResponse; else LOADING" class="col-md-12">
+      <div *ngFor="let state of statesResponse.states" (click)="stateSelected(state)" class="col-md-3 btn btn-link">
+        {{state.state_name}}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="selectedState && showDistricts">
+    <app-state-component (stateWithDistricts)="districtsSelected($event)" [state]="selectedState"></app-state-component>
+  </div>
+  <div *ngIf="stateWithDistricts" class="col-md-12" style="text-align: center">
+    <app-district-component [selectedState]="stateWithDistricts"></app-district-component>
+  </div>
+</div>
+<ng-template #LOADING>
+  <div class="lds-dual-ring"></div>
+</ng-template>

@@ -1,0 +1,17 @@
+<div style="text-align: center" class="col-md-12">
+  <h2>Choose your districts</h2>
+</div>
+<div *ngIf="districtResponse">
+  <div *ngFor="let d of districtResponse.districts" class="col-md-3">
+    <input class="form-check-input"
+           type="checkbox"
+           [value]=d.district_id
+           [checked]="d.isSelected"
+           (change)="d.isSelected = !d.isSelected"/> {{d.district_name}}
+  </div>
+  <div class="col-md-5"></div>
+  <div class="col-md-2">
+    <button class=".btn-primary" style="text-align: center; margin: 1vw" (click)="showSelectedDistricts()">Submit</button>
+  </div>
+  <div class="col-md-5"></div>
+</div>

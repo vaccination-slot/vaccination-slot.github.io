@@ -1,0 +1,29 @@
+<div class="col-md-4">
+  <label>Select Vaccine type</label>
+  <select [disabled]="populatingValues" class="form-control" [(ngModel)]="criteria.vaccineType"
+          (ngModelChange)="toggleVaccineType(criteria.vaccineType)">
+    <option selected value="Covaxin">Covaxin</option>
+    <option value="Covishield">Covishield</option>
+    <option value="Any">Any</option>
+  </select>
+</div>
+<div class="col-md-4">
+  <label>Select slot type</label>
+  <select [disabled]="populatingValues" class="form-control" [(ngModel)]="criteria.slotType"
+          (ngModelChange)="toggleSlotType(criteria.slotType)">
+    <option selected value="Free">Free</option>
+    <option value="Paid">Paid</option>
+    <option value="Any">Any</option>
+  </select>
+</div>
+<div class="col-md-4">
+  <label>Select Age group</label>
+  <select [disabled]="populatingValues" class="form-control" [(ngModel)]="criteria.age" (ngModelChange)="toggleAgeGroup(criteria.age)">
+    <option selected value="18+">18 - 44</option>
+    <option value="45+">45+</option>
+    <option value="Any">Any</option>
+  </select>
+</div>
+<div *ngIf="selectedState.districts.length === districtResults.length" class="col-md-12">
+  <app-slots *ngFor="let d of districtResults" [availableSlotDetails]="d" class="col-md-4"></app-slots>
+</div>
